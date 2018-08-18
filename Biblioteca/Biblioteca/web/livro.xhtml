@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    
+    <h:body>
+        <h:form>
+            <fieldset>
+                <legend>Dados do Livro</legend>
+                <h:panelGrid columns="2">
+                    
+                    <h:outputLabel value="Titulo: " for="titulo" />
+                    <h:inputText id="titulo" value="#{LivroBean.livro.titulo}"/>
+                    <h:outputLabel value="ISBN: " for="isbn" />
+                    <h:inputText id="isbn" value="#{LivroBean.getLivro().setIsbn(this)}"/>
+                    <h:outputLabel value="Preço: " for="preco" />
+                    <h:inputText id="preco" value="#{LivroBean.livro.preco}"/>
+                    <h:outputLabel value="Lançamento: " for="lancamento" />
+                    <h:inputText id="lancamento" value="#{LivroBean.livro.lancamento}"/>
+                    <h:commandButton value="Salvar" action="#{LivroBean.salvar()}"/>
+               
+                </h:panelGrid>
+            </fieldset>
+        </h:form>
+    </h:body>
+</html>
