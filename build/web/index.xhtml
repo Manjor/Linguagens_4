@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:b="http://bootsfaces.net/ui">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <b:navBar brand="Gestão de Chamado" brandHref="#" fluid="true">
+            <b:navbarLinks pull="right">
+                <b:navLink value="Inicio"></b:navLink>
+                <b:navLink value="Novo Chamado"></b:navLink>
+                <b:navLink value="Meus Chamador"></b:navLink>
+            </b:navbarLinks>
+        </b:navBar>
+        
+        <b:container fluid="">
+            <b:row>
+                <b:column span="10" offset="1" style="text-align: center; margin-bottom: 2%">
+                    <h1>Sistema de Gerenciamento de Chamados</h1>
+                    <p>Bem-Vindo a primeira versão dos sistema, aqui você poderá solicitar atendimento de suporte técnico diretamente com os nossos técnicos.</p>
+                </b:column>
+                <b:column span="4" style="text-align:center">
+                    <b:panel>
+                        <h3>Aqui você pode abrir chamados em poucos minutos.</h3>
+                       
+                        <b:button value="Abrir Chamado" look="primary" size="lg"></b:button>
+                    </b:panel>
+                </b:column>
+                <b:column span="4" style="text-align:center">
+                    <b:panel>
+                        <h3>Veja também todos os chamados que você já abriu.</h3>
+                        <h4>Acompanhe o andamento e o status da sua requisição.</h4>
+                        <b:button value="Ver Chamados" look="primary" size="lg"></b:button>
+                    </b:panel>
+                </b:column>
+                <b:column span="4" style="text-align:center">
+                    <b:panel>
+                        <h3>Veja seus relatórios de todos os seus Chamados já realizados</h3>
+                        
+                        <b:button value="Ver Relatórios" look="primary" size="lg"></b:button>
+                    </b:panel>
+                </b:column>
+            </b:row>
+            <b:row>
+                <b:column span="12" style="text-align: center; margin-top: 15%; border: 1px solid; padding: 5% 0">
+                    <h4>Estamos em constante evolução na tentativa de manter a qualidade em nossos serviços.</h4>
+                    <p>Se você tiver algum elegio, reclamação ou sujestão.</p>
+                </b:column>
+                <b:column span="12" style="text-align: center">
+                    <b:button value="Informe-nos" size="lg" look="warning" style="margin-top: -3%"></b:button>
+                </b:column>
+            </b:row>
+        </b:container>
+       
+    </h:body>
+</html>
+
