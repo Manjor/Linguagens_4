@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+         xmlns:h="http://java.sun.com/jsf/html"
+         xmlns:b="http://bootsfaces.net/ui">
+    <head>
+        <title>Login</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <style>
+            body{
+                font-family: monospace, sans-serif;
+            }
+            #divLogin{
+                margin: 0 auto;
+                width: 450px;
+            }
+            h1{
+               text-align: center;
+            }
+            input{
+                width: 300px;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="divLogin">
+            <h1>Acesso ao Sistema</h1>
+            <form action="action">
+                <div>
+                    <label for="inUsuario">Usuario</label>
+                    <input id="inUsuario" type="text"/>
+                </div>
+                <div>
+                    <label for="inSenha">Senha</label>
+                    <input id="inSenha" type="password"/>
+                </div>
+                <button type="submit">Logar</button>
+            </form>
+        </div>
+    </body>
+</html>

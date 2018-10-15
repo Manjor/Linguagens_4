@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:b="http://bootsfaces.net/ui">
+    <h:head>
+        <title>Registrar Novo Chamado</title>
+        <style>
+            #divFormulario{
+                width: 80%;
+                margin: 0 auto;
+                background-color: #15d8b1;
+                padding: 10px;
+            }
+        </style>
+    </h:head>
+    <h:body>
+        <div>
+            <h1 style="text-align: center">Abrir Novo Chamado</h1>
+        </div>
+        <div id="divFormulario">
+            <form>
+                <div>
+                    <label>Categoria</label> <br/>
+                    <select>
+                        <option>Opção 01</option>
+                    </select>
+                </div>
+                <div>
+                    <label>Assunto</label> <br/>
+                    <input type="text"></input>
+                </div>
+                <div>
+                    <label>Descrição</label> <br/>
+                    <textarea cols="70" rows="5" />
+                </div>
+                <button>Registrar Chamado</button>
+            </form>
+        </div>
+    </h:body>
+</html>
+
