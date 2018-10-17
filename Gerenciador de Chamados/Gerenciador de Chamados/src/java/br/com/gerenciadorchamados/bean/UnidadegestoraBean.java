@@ -5,7 +5,9 @@
  */
 package br.com.gerenciadorchamados.bean;
 import br.com.gerenciadorchamados.dao.DAOGenerica;
+import br.com.gerenciadorchamados.model.Chamado;
 import br.com.gerenciadorchamados.model.Unidadegestora;
+import java.util.List;
 import javax.faces.bean.ManagedBean;
 
 /**
@@ -24,4 +26,9 @@ public class UnidadegestoraBean {
        new DAOGenerica<Unidadegestora>(Unidadegestora.class).adiciona(unidadegestora);
        this.unidadegestora = new Unidadegestora();
     }
+    public List<Unidadegestora> buscaTodos(){
+        List<Unidadegestora> resultado = new DAOGenerica<Unidadegestora>(Unidadegestora.class).listaTodos();
+        this.unidadegestora = new Unidadegestora();
+        return resultado;
+    } 
 }

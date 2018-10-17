@@ -15,18 +15,17 @@
         <h:body>
             <b:container>
                 <b:row>
-                    <b:column span="4" offset="4" >
-                        <h1>Acesso - GCMe</h1>
-                    </b:column>
-                    <b:column span="6" offset="3">
-                        <b:form>
-                            <b:inputText label="Usuario:">
-                            </b:inputText>
-                            <b:inputSecret label="Senha">
-                            </b:inputSecret>
-                            <b:button look="primary" value="Acessar"></b:button>
-                        </b:form>
-                    </b:column>
+                    <b:panel title="Acesso GCM" style="margin: 20% auto; width: 70%; padding: 2%">
+                        <b:column span="6" offset="3">
+                            <b:form>
+                                <b:inputText label="Usuario:" placeholder="email@example.com" required="Favor prencher o campo com o email de usuário">
+                                </b:inputText>
+                                <b:inputSecret label="Senha" placeholder="Your Password" required="Favor precher o campo com sua senha">
+                                </b:inputSecret>
+                                <b:button look="primary" value="Acessar"></b:button>
+                            </b:form>
+                        </b:column>
+                    </b:panel>
                 </b:row>
             </b:container>
         </h:body>

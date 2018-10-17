@@ -84,6 +84,17 @@ public class DAOGenerica<T> {
         
         return instancia;
     }
+    
+//    public List<T> buscarPorUg(T t){
+//        
+//        EntityManager em = new JPAUtil().getEntityManager();
+//        
+//        CriteriaQuery<T> query = em.getCriteriaBuilder().createQuery(classe);
+//        query.select(query.from(classe));
+//        em.close();
+//        
+//        return result;
+//    }
      
     /*public Long contaLivros(){
         EntityManager em = new JPAUtil().getEntityManager();

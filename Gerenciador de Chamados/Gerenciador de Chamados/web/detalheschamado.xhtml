@@ -5,7 +5,7 @@
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core">
     <h:head>
-        <title>Central de Chamados</title>
+        <title>Meus Chamados</title>
     </h:head>
     <h:body>
         <b:navBar brand="Gestão de Chamado" brandHref="#" fluid="true">
@@ -19,20 +19,15 @@
         <b:container fluid="">
             <b:row>
                 <b:column span="6" offset="3">
-                    <h1 style="text-align: center;">Todos os Chamados</h1>
+                    <h1 style="text-align: center;">Seus Chamados</h1>
                 </b:column>
                 <b:column span="10" offset="1">
-                    <b:dataTable value="#{chamadoBean.buscaTodos()}" var="chamado">
-                        <b:dataTableColumn value="#{chamado.idchamado}" label="ID"/>
-                        <b:dataTableColumn value="#{chamado.idstatusFk.nomestatus}" label="Status"/>
-                        <b:dataTableColumn value="#{chamado.assunto}"/>
-                        <b:dataTableColumn value="#{chamado.descricao}"/>
-                        <b:dataTableColumn value="#{chamado.idusuarioFk.nome}" label="Usuario"/>
-                        <b:dataTableColumn value="#{chamado.idcategoriaFk.nomecategoria}" label="Categoria"/>
-                        <b:dataTableColumn value="Tecnico" label="Técnico"/>
-                        <b:dataTableColumn label="Detalhes">
-                            <b:button value="Detalhes"></b:button>
-                        </b:dataTableColumn>
+                    <b:dataTable>
+                        <b:dataTableColumn value="ID"/>
+                        <b:dataTableColumn value="Status"/>
+                        <b:dataTableColumn value="Assunto"/>
+                        <b:dataTableColumn value="Data"/>
+                        <b:dataTableColumn value="Tecnico"/>
                     </b:dataTable>
                 </b:column>
             </b:row>    

@@ -15,10 +15,14 @@
                 <b:navLink value="Meus Chamador" href="meuschamado.xhtml"></b:navLink>
             </b:navbarLinks>
         </b:navBar>
-
+        
         <b:container fluid="">
             <b:row>
-                <b:column span="10" offset="1" style="text-align: center; margin-bottom: 2%">
+                <b:panel look="info">
+                    <f:facet name="heading">
+                        <h:outputText value="Bem Vindo"/>
+                    </f:facet>
+                    <b:column span="10" offset="1" style="text-align: center; margin-bottom: 2%">
                     <h1>Sistema de Gerenciamento de Chamados</h1>
                     <p>Bem-Vindo a primeira versão dos sistema, aqui você poderá solicitar atendimento de suporte técnico diretamente com os nossos técnicos.</p>
                 </b:column>
@@ -43,6 +47,7 @@
                         <b:button value="Ver Relatórios" look="primary" size="lg"></b:button>
                     </b:panel>
                 </b:column>
+                </b:panel>
             </b:row>
             <b:row>
                 <b:column span="12" style="text-align: center; margin-top: 15%; border: 1px solid; padding: 5% 0">

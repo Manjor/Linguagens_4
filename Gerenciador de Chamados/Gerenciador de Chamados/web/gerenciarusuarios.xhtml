@@ -1,0 +1,114 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>Gestão de Pessoas</title>
+    </h:head>
+    <h:body>
+        <b:navBar brand="Gestão de Chamado" brandHref="#" fluid="true">
+            <b:navbarLinks pull="right">
+                <b:navLink value="Inicio"></b:navLink>
+                <b:navLink value="Novo Chamado"></b:navLink>
+                <b:navLink value="Meus Chamador"></b:navLink>
+            </b:navbarLinks>
+        </b:navBar>
+
+        <b:container fluid="">
+            <b:row>
+                <b:column  span="10" offset="1" >
+                    <h1 style="text-align: center;">Todos os Usuarios</h1>
+                </b:column>
+                <b:column span="10" offset="1">
+                    <b:panel title="Novo Usuario" look="info" >
+                        <b:form>
+                            <b:column span="6" offset="3" style="text-align: center">
+                                <h:messages/>
+                            </b:column>
+                            <b:column col-md="8">
+                                <b:formGroup>
+                                    <b:inputText label="Nome Completo" value="#{usuarioBean.usuario.nome}" placeholder="Ex.: Manoel Tavares" required="true"/>
+                                </b:formGroup>
+                            </b:column>
+                            <b:column col-md="4">
+                                <b:formGroup>
+                                    <b:inputText placeholder="000.000.000-00" value="#{usuarioBean.usuario.cpf}" label="CPF" required="true"/>
+                                </b:formGroup>
+                            </b:column>
+                            <b:column col-md="4">
+                                <b:formGroup>
+                                    <b:inputText placeholder="email@example.com" value="#{contatoBean.contato.email}" label="Email" required="true"/>
+                                </b:formGroup>
+                            </b:column>
+                            <b:column col-md="4">
+                                <b:formGroup>
+                                    <b:inputText placeholder="63 900000000" value="#{contatoBean.contato.telefone}" label="Celuar" required="true"/>
+                                </b:formGroup>
+                            </b:column>
+                            <b:column col-md="4">
+                                <b:formGroup>
+                                    <b:inputText placeholder="63 3200-0000" value="#{contatoBean.contato.telefonerecado}" label="Telefone Recado"/>
+                                </b:formGroup>
+                            </b:column>
+                            <b:column col-md="6">
+                                <b:formGroup>
+                                    <b:selectOneMenu label="Unidade Gestora" required="true">
+                                        <f:selectItem itemLabel="Selecione..." itemValue=""></f:selectItem>
+                                        <f:selectItems value="#{unidadegestoraBean.buscaTodos()}"></f:selectItems>
+                                    </b:selectOneMenu>
+                                </b:formGroup>
+                            </b:column>
+                            <b:column col-md="6">
+                                <b:formGroup>
+                                    <b:selectOneMenu label="Departamento" required="true">
+                                        <f:selectItem itemLabel="Selecione..." itemValue=""></f:selectItem>
+                                        <f:selectItems itemLabel="#{lotacaoBean.buscaPorUg}"></f:selectItems>                                    </b:selectOneMenu>
+                                </b:formGroup>
+                            </b:column>
+                            <b:column col-md="4">
+                                <b:formGroup>
+                                    <b:inputText placeholder="Ex.: manoeltavares2017" label="Usuario" required="true"/>
+                                </b:formGroup>
+                            </b:column>
+                            <b:column col-md="4">
+                                <b:formGroup>
+                                    <b:inputSecret label="Senha" placeholder="Sua Senha" required="true"/>
+                                </b:formGroup>
+                            </b:column>
+                            <b:column col-md="4">
+                                <b:formGroup>
+                                    <b:inputSecret label="Comfirmar Senha" placeholder="Sua Senha" required="true"/>
+                                </b:formGroup>
+                            </b:column>
+                            <b:column col-md="12" style="text-align: right">
+                                <b:formGroup>
+                                    <b:commandButton value="Cadastrar" look="primary" action="#{usuarioBean.salvar()}" ></b:commandButton>
+                                </b:formGroup>
+                            </b:column>
+                            
+                        </b:form>
+                    </b:panel>
+                </b:column>
+                <b:column span="10" offset="1">
+                    <b:dataTable value="#{usuarioBean.buscaTodos()}" var="usuario">
+                        <b:dataTableColumn value="#{usuario.nome}" label="Nome"/>
+                        <b:dataTableColumn value="#{usuario.cpf}" label="CPF"/>
+                        <b:dataTableColumn value="#{usuario.idcontatoFk.email}" label="Email"/>
+                        <b:dataTableColumn value="#{usuario.idcontatoFk.telefone}" label="Telefone"/>
+                        <b:dataTableColumn value="#{usuario.idlotacaoFk.nomedepartamento}" label="Departamendo"/>
+                        <b:dataTableColumn value="#{usuario.idlotacaoFk.idunidadegestoraFk.nomeunidade}" label="UG" />
+                        <b:dataTableColumn label="Editar">
+                            <b:button value="Editar" look="warning"></b:button>
+                        </b:dataTableColumn>
+                        <b:dataTableColumn label="Deletar">
+                            <b:button value="Deletar" look="danger"></b:button>
+                        </b:dataTableColumn>
+                    </b:dataTable>
+                </b:column>
+            </b:row>    
+        </b:container>
+    </h:body>
+</html>
+

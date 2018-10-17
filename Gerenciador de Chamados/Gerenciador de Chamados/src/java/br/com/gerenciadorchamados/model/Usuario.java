@@ -38,6 +38,9 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Usuario.findByCpf", query = "SELECT u FROM Usuario u WHERE u.cpf = :cpf")})
 public class Usuario implements Serializable {
 
+    @OneToMany(mappedBy = "idusuarioFk")
+    private Collection<Login> loginCollection;
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -144,6 +147,15 @@ public class Usuario implements Serializable {
     @Override
     public String toString() {
         return "br.com.gerenciadorchamados.model.Usuario[ idusuario=" + idusuario + " ]";
+    }
+
+    @XmlTransient
+    public Collection<Login> getLoginCollection() {
+        return loginCollection;
+    }
+
+    public void setLoginCollection(Collection<Login> loginCollection) {
+        this.loginCollection = loginCollection;
     }
     
 }

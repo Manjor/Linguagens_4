@@ -9,6 +9,8 @@ package br.com.gerenciadorchamados.bean;
 import br.com.gerenciadorchamados.model.Lotacao;
 import javax.faces.bean.ManagedBean;
 import br.com.gerenciadorchamados.dao.DAOGenerica;
+import br.com.gerenciadorchamados.model.Unidadegestora;
+import java.util.List;
 
 /**
  *
@@ -26,4 +28,9 @@ public class LotacaoBean {
        new DAOGenerica<Lotacao>(Lotacao.class).adiciona(lotacao);
        this.lotacao = new Lotacao();
     }
+    public List<Lotacao> buscaTodos(){
+        List<Lotacao> resultado = new DAOGenerica<Lotacao>(Lotacao.class).listaTodos();
+        this.lotacao = new Lotacao();
+        return resultado;
+    } 
 }

@@ -34,6 +34,10 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Chamado.findByDescricao", query = "SELECT c FROM Chamado c WHERE c.descricao = :descricao")})
 public class Chamado implements Serializable {
 
+    @JoinColumn(name = "idstatus_fk", referencedColumnName = "idstatus")
+    @ManyToOne
+    private Status idstatusFk;
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -132,6 +136,14 @@ public class Chamado implements Serializable {
     @Override
     public String toString() {
         return "br.com.gerenciadorchamados.model.Chamado[ idchamado=" + idchamado + " ]";
+    }
+
+    public Status getIdstatusFk() {
+        return idstatusFk;
+    }
+
+    public void setIdstatusFk(Status idstatusFk) {
+        this.idstatusFk = idstatusFk;
     }
     
 }
