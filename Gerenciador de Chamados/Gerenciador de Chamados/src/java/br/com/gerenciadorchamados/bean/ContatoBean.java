@@ -21,6 +21,11 @@ public class ContatoBean {
     public Contato getContato() {
         return contato;
     }
+
+    public void setContato(Contato contato) {
+        this.contato = contato;
+    }
+    
     public void salvar(){
        new DAOGenerica<Contato>(Contato.class).adiciona(contato);
        this.contato = new Contato();

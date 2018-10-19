@@ -7,6 +7,8 @@ package br.com.gerenciadorchamados.dao;
  */
 
 import br.com.gerenciadorchamados.dao.JPAUtil;
+import br.com.gerenciadorchamados.model.Chamado;
+import br.com.gerenciadorchamados.model.Lotacao;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.criteria.CriteriaQuery;
@@ -39,7 +41,7 @@ public class DAOGenerica<T> {
         //fechar a entity manager
         em.close();
     }
-    
+  
     public void remove(T t){
         EntityManager em = new JPAUtil().getEntityManager();
         
@@ -75,6 +77,12 @@ public class DAOGenerica<T> {
         
         return lista;
     }
+//    public List<T> listaUg(int idUg){
+//        EntityManager em = new JPAUtil().getEntityManager();
+//        List<T> list = em.createQuery("SELECT nomedepartamento FROM lotacao WHERE idunidadegestora_fk =  "+idUg+"",classe).getResultList();
+//        em.close();
+//        return list;
+//    }
     public T buscaPorId(Integer id){
         EntityManager em = new JPAUtil().getEntityManager();
         

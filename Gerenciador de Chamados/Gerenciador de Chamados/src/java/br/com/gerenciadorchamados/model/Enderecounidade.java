@@ -6,9 +6,8 @@
 package br.com.gerenciadorchamados.model;
 
 import java.io.Serializable;
-import java.util.Collection;
+import java.util.List;
 import javax.persistence.Basic;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -18,7 +17,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
-import javax.persistence.Table;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
@@ -28,7 +26,6 @@ import javax.xml.bind.annotation.XmlTransient;
  * @author MANOEL
  */
 @Entity
-@Table(name = "enderecounidade")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Enderecounidade.findAll", query = "SELECT e FROM Enderecounidade e")
@@ -42,22 +39,18 @@ public class Enderecounidade implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "idenderecounidade")
     private Integer idenderecounidade;
     @Size(max = 150)
-    @Column(name = "logradouro")
     private String logradouro;
     @Size(max = 150)
-    @Column(name = "bairro")
     private String bairro;
     @Size(max = 20)
-    @Column(name = "cep")
     private String cep;
     @JoinColumn(name = "idcidade_fk", referencedColumnName = "idcidade")
     @ManyToOne
     private Cidade idcidadeFk;
     @OneToMany(mappedBy = "idenderecounidadeFk")
-    private Collection<Unidadegestora> unidadegestoraCollection;
+    private List<Unidadegestora> unidadegestoraList;
 
     public Enderecounidade() {
     }
@@ -107,12 +100,12 @@ public class Enderecounidade implements Serializable {
     }
 
     @XmlTransient
-    public Collection<Unidadegestora> getUnidadegestoraCollection() {
-        return unidadegestoraCollection;
+    public List<Unidadegestora> getUnidadegestoraList() {
+        return unidadegestoraList;
     }
 
-    public void setUnidadegestoraCollection(Collection<Unidadegestora> unidadegestoraCollection) {
-        this.unidadegestoraCollection = unidadegestoraCollection;
+    public void setUnidadegestoraList(List<Unidadegestora> unidadegestoraList) {
+        this.unidadegestoraList = unidadegestoraList;
     }
 
     @Override

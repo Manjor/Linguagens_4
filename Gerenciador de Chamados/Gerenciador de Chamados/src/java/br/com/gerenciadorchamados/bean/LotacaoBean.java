@@ -32,5 +32,11 @@ public class LotacaoBean {
         List<Lotacao> resultado = new DAOGenerica<Lotacao>(Lotacao.class).listaTodos();
         this.lotacao = new Lotacao();
         return resultado;
-    } 
+    }
+//    public List<Lotacao> buscaPorUg(int idUg){
+//        List<Lotacao> resList = new DAOGenerica<Lotacao>(Lotacao.class).listaUg(idUg);
+//        this.lotacao = new Lotacao();
+//        System.out.println("Resultado"+ resList.toString());
+//        return resList;
+//    }
 }

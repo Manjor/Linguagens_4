@@ -7,7 +7,6 @@ package br.com.gerenciadorchamados.model;
 
 import java.io.Serializable;
 import javax.persistence.Basic;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -16,7 +15,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -26,7 +24,6 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author MANOEL
  */
 @Entity
-@Table(name = "login")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Login.findAll", query = "SELECT l FROM Login l")
@@ -41,21 +38,16 @@ public class Login implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "idlogin")
     private Integer idlogin;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 255)
-    @Column(name = "usuario")
     private String usuario;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 255)
-    @Column(name = "senha")
     private String senha;
-    @Column(name = "nivelacesso")
     private Integer nivelacesso;
-    @Column(name = "ativo")
     private Integer ativo;
     @JoinColumn(name = "idusuario_fk", referencedColumnName = "idusuario")
     @ManyToOne

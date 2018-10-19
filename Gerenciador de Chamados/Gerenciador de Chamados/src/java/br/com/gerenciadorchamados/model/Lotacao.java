@@ -6,9 +6,8 @@
 package br.com.gerenciadorchamados.model;
 
 import java.io.Serializable;
-import java.util.Collection;
+import java.util.List;
 import javax.persistence.Basic;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -18,7 +17,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
-import javax.persistence.Table;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
@@ -28,7 +26,6 @@ import javax.xml.bind.annotation.XmlTransient;
  * @author MANOEL
  */
 @Entity
-@Table(name = "lotacao")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Lotacao.findAll", query = "SELECT l FROM Lotacao l")
@@ -42,22 +39,18 @@ public class Lotacao implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "idlotacao")
     private Integer idlotacao;
     @Size(max = 100)
-    @Column(name = "nomedepartamento")
     private String nomedepartamento;
     @Size(max = 30)
-    @Column(name = "sigla")
     private String sigla;
     @Size(max = 45)
-    @Column(name = "lotacaocol")
     private String lotacaocol;
     @JoinColumn(name = "idunidadegestora_fk", referencedColumnName = "idunidadegestora")
     @ManyToOne
     private Unidadegestora idunidadegestoraFk;
     @OneToMany(mappedBy = "idlotacaoFk")
-    private Collection<Usuario> usuarioCollection;
+    private List<Usuario> usuarioList;
 
     public Lotacao() {
     }
@@ -107,12 +100,12 @@ public class Lotacao implements Serializable {
     }
 
     @XmlTransient
-    public Collection<Usuario> getUsuarioCollection() {
-        return usuarioCollection;
+    public List<Usuario> getUsuarioList() {
+        return usuarioList;
     }
 
-    public void setUsuarioCollection(Collection<Usuario> usuarioCollection) {
-        this.usuarioCollection = usuarioCollection;
+    public void setUsuarioList(List<Usuario> usuarioList) {
+        this.usuarioList = usuarioList;
     }
 
     @Override

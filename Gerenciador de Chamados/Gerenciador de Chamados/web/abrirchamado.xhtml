@@ -24,15 +24,20 @@
                 <b:column span="6" offset="3">
                     <b:form>
                         <b:formGroup>
-                            <b:selectOneMenu value="#{chamadoBean.chamado.idcategoriaFk}" label="Categoria">
-                                <f:selectItem itemLabel="(Selecione...)" itemValue=""></f:selectItem>
-                                <f:selectItem itemLabel="Requisição" itemValue="1"></f:selectItem>
-                                <f:selectItem itemLabel="Incidente" itemValue="2"></f:selectItem>
+                            <b:selectOneMenu label="Categoria">
+                                <f:selectItems value="#{categoriaBean.buscaTodos()}" var="categoria" itemValue="#{chamadoBean.chamado.idcategoriaFk.categoria}" itemLabel="#{categoria.nomecategoria}"></f:selectItems>
                             </b:selectOneMenu>
                         </b:formGroup>
-<!--                        <b:formGroup>
-                            <b:inputText label="Telefone" placeholder="63 99210000"></b:inputText>
-                        </b:formGroup>-->
+                        <b:formGroup>
+                            <b:selectOneMenu label="Usuario">
+                                <f:selectItems value="#{usuarioBean.buscaTodos()}" var="usuario" itemValue="#{chamadoBean.chamado.idusuarioFk.usuario}" itemLabel="#{usuario.nome}"></f:selectItems>
+                            </b:selectOneMenu>
+                        </b:formGroup>
+                        <b:formGroup>
+                            <b:selectOneMenu label="Status">
+                                <f:selectItems value="#{statusBean.buscaTodos()}" var="status" itemValue="#{chamadoBean.chamado.idstatusFk.status}" itemLabel="#{status.nomestatus}"></f:selectItems>
+                            </b:selectOneMenu>
+                        </b:formGroup>
                         <b:formGroup>
                             <b:inputText label="Assunto" value="#{chamadoBean.chamado.assunto}" placeholder="Ex.: Computador não está ligando" ></b:inputText>
                         </b:formGroup>

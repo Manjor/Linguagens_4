@@ -7,7 +7,6 @@ package br.com.gerenciadorchamados.model;
 
 import java.io.Serializable;
 import javax.persistence.Basic;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -16,7 +15,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.Table;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -25,7 +23,6 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author MANOEL
  */
 @Entity
-@Table(name = "chamado")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Chamado.findAll", query = "SELECT c FROM Chamado c")
@@ -34,44 +31,31 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Chamado.findByDescricao", query = "SELECT c FROM Chamado c WHERE c.descricao = :descricao")})
 public class Chamado implements Serializable {
 
-    @JoinColumn(name = "idstatus_fk", referencedColumnName = "idstatus")
-    @ManyToOne
-    private Status idstatusFk;
-
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "idchamado")
     private Integer idchamado;
     @Size(max = 200)
-    @Column(name = "assunto")
     private String assunto;
     @Size(max = 45)
-    @Column(name = "descricao")
     private String descricao;
     @JoinColumn(name = "idcategoria_fk", referencedColumnName = "idcategoria")
     @ManyToOne
     private Categoria idcategoriaFk;
+    @JoinColumn(name = "idstatus_fk", referencedColumnName = "idstatus")
+    @ManyToOne
+    private Status idstatusFk;
     @JoinColumn(name = "idusuario_fk", referencedColumnName = "idusuario")
     @ManyToOne
     private Usuario idusuarioFk;
 
     public Chamado() {
     }
-    
+
     public Chamado(Integer idchamado) {
         this.idchamado = idchamado;
     }
-    public Chamado(Integer idchamado, String assunto, String descricao, Categoria idcategoriaFk, Usuario idusuarioFk) {
-        this.idchamado = idchamado;
-        this.assunto = assunto;
-        this.descricao = descricao;
-        this.idcategoriaFk = idcategoriaFk;
-        this.idusuarioFk = idusuarioFk;
-    }
-    
-
 
     public Integer getIdchamado() {
         return idchamado;
@@ -105,6 +89,14 @@ public class Chamado implements Serializable {
         this.idcategoriaFk = idcategoriaFk;
     }
 
+    public Status getIdstatusFk() {
+        return idstatusFk;
+    }
+
+    public void setIdstatusFk(Status idstatusFk) {
+        this.idstatusFk = idstatusFk;
+    }
+
     public Usuario getIdusuarioFk() {
         return idusuarioFk;
     }
@@ -136,14 +128,6 @@ public class Chamado implements Serializable {
     @Override
     public String toString() {
         return "br.com.gerenciadorchamados.model.Chamado[ idchamado=" + idchamado + " ]";
-    }
-
-    public Status getIdstatusFk() {
-        return idstatusFk;
-    }
-
-    public void setIdstatusFk(Status idstatusFk) {
-        this.idstatusFk = idstatusFk;
     }
     
 }

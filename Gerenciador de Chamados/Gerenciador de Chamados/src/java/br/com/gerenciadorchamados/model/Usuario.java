@@ -6,9 +6,8 @@
 package br.com.gerenciadorchamados.model;
 
 import java.io.Serializable;
-import java.util.Collection;
+import java.util.List;
 import javax.persistence.Basic;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -18,7 +17,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
-import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -29,7 +27,6 @@ import javax.xml.bind.annotation.XmlTransient;
  * @author MANOEL
  */
 @Entity
-@Table(name = "usuario")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Usuario.findAll", query = "SELECT u FROM Usuario u")
@@ -38,30 +35,26 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Usuario.findByCpf", query = "SELECT u FROM Usuario u WHERE u.cpf = :cpf")})
 public class Usuario implements Serializable {
 
-    @OneToMany(mappedBy = "idusuarioFk")
-    private Collection<Login> loginCollection;
-
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "idusuario")
     private Integer idusuario;
     @Size(max = 250)
-    @Column(name = "nome")
     private String nome;
     @Basic(optional = false)
     @NotNull
-    @Column(name = "cpf")
     private int cpf;
     @OneToMany(mappedBy = "idusuarioFk")
-    private Collection<Chamado> chamadoCollection;
+    private List<Chamado> chamadoList;
     @JoinColumn(name = "idcontato_fk", referencedColumnName = "idcontato")
     @ManyToOne
     private Contato idcontatoFk;
     @JoinColumn(name = "idlotacao_fk", referencedColumnName = "idlotacao")
     @ManyToOne
     private Lotacao idlotacaoFk;
+    @OneToMany(mappedBy = "idusuarioFk")
+    private List<Login> loginList;
 
     public Usuario() {
     }
@@ -100,12 +93,12 @@ public class Usuario implements Serializable {
     }
 
     @XmlTransient
-    public Collection<Chamado> getChamadoCollection() {
-        return chamadoCollection;
+    public List<Chamado> getChamadoList() {
+        return chamadoList;
     }
 
-    public void setChamadoCollection(Collection<Chamado> chamadoCollection) {
-        this.chamadoCollection = chamadoCollection;
+    public void setChamadoList(List<Chamado> chamadoList) {
+        this.chamadoList = chamadoList;
     }
 
     public Contato getIdcontatoFk() {
@@ -122,6 +115,15 @@ public class Usuario implements Serializable {
 
     public void setIdlotacaoFk(Lotacao idlotacaoFk) {
         this.idlotacaoFk = idlotacaoFk;
+    }
+
+    @XmlTransient
+    public List<Login> getLoginList() {
+        return loginList;
+    }
+
+    public void setLoginList(List<Login> loginList) {
+        this.loginList = loginList;
     }
 
     @Override
@@ -147,15 +149,6 @@ public class Usuario implements Serializable {
     @Override
     public String toString() {
         return "br.com.gerenciadorchamados.model.Usuario[ idusuario=" + idusuario + " ]";
-    }
-
-    @XmlTransient
-    public Collection<Login> getLoginCollection() {
-        return loginCollection;
-    }
-
-    public void setLoginCollection(Collection<Login> loginCollection) {
-        this.loginCollection = loginCollection;
     }
     
 }

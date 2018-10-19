@@ -6,9 +6,8 @@
 package br.com.gerenciadorchamados.model;
 
 import java.io.Serializable;
-import java.util.Collection;
+import java.util.List;
 import javax.persistence.Basic;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -16,7 +15,6 @@ import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
-import javax.persistence.Table;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
@@ -26,7 +24,6 @@ import javax.xml.bind.annotation.XmlTransient;
  * @author MANOEL
  */
 @Entity
-@Table(name = "contato")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Contato.findAll", query = "SELECT c FROM Contato c")
@@ -40,20 +37,16 @@ public class Contato implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "idcontato")
     private Integer idcontato;
     @Size(max = 30)
-    @Column(name = "telefone")
     private String telefone;
     @Size(max = 30)
-    @Column(name = "telefonerecado")
     private String telefonerecado;
     // @Pattern(regexp="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", message="E-mail inválido")//if the field contains email address consider using this annotation to enforce field validation
     @Size(max = 150)
-    @Column(name = "email")
     private String email;
     @OneToMany(mappedBy = "idcontatoFk")
-    private Collection<Usuario> usuarioCollection;
+    private List<Usuario> usuarioList;
 
     public Contato() {
     }
@@ -95,12 +88,12 @@ public class Contato implements Serializable {
     }
 
     @XmlTransient
-    public Collection<Usuario> getUsuarioCollection() {
-        return usuarioCollection;
+    public List<Usuario> getUsuarioList() {
+        return usuarioList;
     }
 
-    public void setUsuarioCollection(Collection<Usuario> usuarioCollection) {
-        this.usuarioCollection = usuarioCollection;
+    public void setUsuarioList(List<Usuario> usuarioList) {
+        this.usuarioList = usuarioList;
     }
 
     @Override

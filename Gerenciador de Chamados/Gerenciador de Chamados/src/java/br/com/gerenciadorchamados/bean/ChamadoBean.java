@@ -22,6 +22,11 @@ public class ChamadoBean {
     public Chamado getChamado() {
         return chamado;
     }
+
+    public void setChamado(Chamado chamado) {
+        this.chamado = chamado;
+    }
+    
     public void salvar(){
        new DAOGenerica<Chamado>(Chamado.class).adiciona(chamado);
        this.chamado = new Chamado();

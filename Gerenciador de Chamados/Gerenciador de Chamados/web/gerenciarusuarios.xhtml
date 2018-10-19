@@ -54,9 +54,9 @@
                             </b:column>
                             <b:column col-md="6">
                                 <b:formGroup>
-                                    <b:selectOneMenu label="Unidade Gestora" required="true">
+                                    <b:selectOneMenu label="Unidade Gestora" value="#{unidadegestoraBean.unidadegestora.idunidadegestora}" required="true">
                                         <f:selectItem itemLabel="Selecione..." itemValue=""></f:selectItem>
-                                        <f:selectItems value="#{unidadegestoraBean.buscaTodos()}"></f:selectItems>
+                                        <f:selectItems></f:selectItems>
                                     </b:selectOneMenu>
                                 </b:formGroup>
                             </b:column>
@@ -64,12 +64,13 @@
                                 <b:formGroup>
                                     <b:selectOneMenu label="Departamento" required="true">
                                         <f:selectItem itemLabel="Selecione..." itemValue=""></f:selectItem>
-                                        <f:selectItems itemLabel="#{lotacaoBean.buscaPorUg}"></f:selectItems>                                    </b:selectOneMenu>
+                                        <f:selectItems ></f:selectItems>                                    
+                                    </b:selectOneMenu>
                                 </b:formGroup>
                             </b:column>
                             <b:column col-md="4">
                                 <b:formGroup>
-                                    <b:inputText placeholder="Ex.: manoeltavares2017" label="Usuario" required="true"/>
+                                    <b:inputText placeholder="Ex.: manoeltavares2017" value="#{loginBean.login.usuario}" label="Usuario" required="true"/>
                                 </b:formGroup>
                             </b:column>
                             <b:column col-md="4">
@@ -79,11 +80,12 @@
                             </b:column>
                             <b:column col-md="4">
                                 <b:formGroup>
-                                    <b:inputSecret label="Comfirmar Senha" placeholder="Sua Senha" required="true"/>
+                                    <b:inputSecret label="Comfirmar Senha" placeholder="Sua Senha" value="#{loginBean.login.senha}" required="true"/>
                                 </b:formGroup>
                             </b:column>
                             <b:column col-md="12" style="text-align: right">
                                 <b:formGroup>
+                                    
                                     <b:commandButton value="Cadastrar" look="primary" action="#{usuarioBean.salvar()}" ></b:commandButton>
                                 </b:formGroup>
                             </b:column>
@@ -92,6 +94,7 @@
                     </b:panel>
                 </b:column>
                 <b:column span="10" offset="1">
+                    <b:form>
                     <b:dataTable value="#{usuarioBean.buscaTodos()}" var="usuario">
                         <b:dataTableColumn value="#{usuario.nome}" label="Nome"/>
                         <b:dataTableColumn value="#{usuario.cpf}" label="CPF"/>
@@ -99,13 +102,12 @@
                         <b:dataTableColumn value="#{usuario.idcontatoFk.telefone}" label="Telefone"/>
                         <b:dataTableColumn value="#{usuario.idlotacaoFk.nomedepartamento}" label="Departamendo"/>
                         <b:dataTableColumn value="#{usuario.idlotacaoFk.idunidadegestoraFk.nomeunidade}" label="UG" />
-                        <b:dataTableColumn label="Editar">
-                            <b:button value="Editar" look="warning"></b:button>
-                        </b:dataTableColumn>
-                        <b:dataTableColumn label="Deletar">
-                            <b:button value="Deletar" look="danger"></b:button>
-                        </b:dataTableColumn>
+                      
+                            <b:dataTableColumn label="Deletar">
+                                <h:commandButton value="Delatar" action="#{usuarioBean.deletar()}"/>
+                            </b:dataTableColumn>                      
                     </b:dataTable>
+                    </b:form>
                 </b:column>
             </b:row>    
         </b:container>

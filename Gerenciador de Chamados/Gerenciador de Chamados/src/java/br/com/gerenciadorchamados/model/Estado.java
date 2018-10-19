@@ -6,9 +6,8 @@
 package br.com.gerenciadorchamados.model;
 
 import java.io.Serializable;
-import java.util.Collection;
+import java.util.List;
 import javax.persistence.Basic;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -16,7 +15,6 @@ import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
-import javax.persistence.Table;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
@@ -26,7 +24,6 @@ import javax.xml.bind.annotation.XmlTransient;
  * @author MANOEL
  */
 @Entity
-@Table(name = "estado")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Estado.findAll", query = "SELECT e FROM Estado e")
@@ -39,16 +36,13 @@ public class Estado implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "idestado")
     private Integer idestado;
     @Size(max = 150)
-    @Column(name = "nomeestado")
     private String nomeestado;
     @Size(max = 2)
-    @Column(name = "sigla")
     private String sigla;
     @OneToMany(mappedBy = "idestadoFk")
-    private Collection<Cidade> cidadeCollection;
+    private List<Cidade> cidadeList;
 
     public Estado() {
     }
@@ -82,12 +76,12 @@ public class Estado implements Serializable {
     }
 
     @XmlTransient
-    public Collection<Cidade> getCidadeCollection() {
-        return cidadeCollection;
+    public List<Cidade> getCidadeList() {
+        return cidadeList;
     }
 
-    public void setCidadeCollection(Collection<Cidade> cidadeCollection) {
-        this.cidadeCollection = cidadeCollection;
+    public void setCidadeList(List<Cidade> cidadeList) {
+        this.cidadeList = cidadeList;
     }
 
     @Override

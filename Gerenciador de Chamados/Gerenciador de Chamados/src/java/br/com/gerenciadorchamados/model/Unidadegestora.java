@@ -6,9 +6,8 @@
 package br.com.gerenciadorchamados.model;
 
 import java.io.Serializable;
-import java.util.Collection;
+import java.util.List;
 import javax.persistence.Basic;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -18,7 +17,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
-import javax.persistence.Table;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
@@ -28,7 +26,6 @@ import javax.xml.bind.annotation.XmlTransient;
  * @author MANOEL
  */
 @Entity
-@Table(name = "unidadegestora")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Unidadegestora.findAll", query = "SELECT u FROM Unidadegestora u")
@@ -41,19 +38,16 @@ public class Unidadegestora implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "idunidadegestora")
     private Integer idunidadegestora;
     @Size(max = 100)
-    @Column(name = "nomeunidade")
     private String nomeunidade;
     @Size(max = 45)
-    @Column(name = "siglaunidade")
     private String siglaunidade;
     @JoinColumn(name = "idenderecounidade_fk", referencedColumnName = "idenderecounidade")
     @ManyToOne
     private Enderecounidade idenderecounidadeFk;
     @OneToMany(mappedBy = "idunidadegestoraFk")
-    private Collection<Lotacao> lotacaoCollection;
+    private List<Lotacao> lotacaoList;
 
     public Unidadegestora() {
     }
@@ -95,12 +89,12 @@ public class Unidadegestora implements Serializable {
     }
 
     @XmlTransient
-    public Collection<Lotacao> getLotacaoCollection() {
-        return lotacaoCollection;
+    public List<Lotacao> getLotacaoList() {
+        return lotacaoList;
     }
 
-    public void setLotacaoCollection(Collection<Lotacao> lotacaoCollection) {
-        this.lotacaoCollection = lotacaoCollection;
+    public void setLotacaoList(List<Lotacao> lotacaoList) {
+        this.lotacaoList = lotacaoList;
     }
 
     @Override
